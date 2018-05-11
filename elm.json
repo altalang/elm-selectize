@@ -1,0 +1,19 @@
+{
+    "type": "package",
+    "name": "altalang/elm-selectize",
+    "summary": "selectize-like dropdown menu with autocompletion",
+    "license": "Apache-2.0",
+    "version": "2.0.4",
+    "exposed-modules": [
+        "Selectize",
+        "MultiSelectize"
+    ],
+    "elm-version": "0.19.0 <= v < 0.20.0",
+    "dependencies": {
+        "NoRedInk/json-decode-pipeline": "2.0.0 <= v < 3.0.0",
+        "elm-lang/core": "6.0.0 <= v < 7.0.0",
+        "elm-lang/html": "3.0.0 <= v < 4.0.0",
+        "elm-lang/json": "1.0.0 <= v < 2.0.0"
+    },
+    "test-dependencies": {}
+}

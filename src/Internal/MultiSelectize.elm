@@ -42,6 +42,7 @@ import Keyboard.Extra
 import Task
 
 
+
 ---- MODEL
 
 
@@ -250,6 +251,7 @@ update { select, unselect, clearSelection, keepQuery, textfieldMovable, matches 
                 , Cmd.none
                 , Nothing
                 )
+
             else
                 let
                     entries =
@@ -282,6 +284,7 @@ update { select, unselect, clearSelection, keepQuery, textfieldMovable, matches 
                 , Cmd.batch
                     [ if state.open then
                         Cmd.none
+
                       else
                         scroll state.id (top - (heights.menu - height) / 2)
                     , focus state.id
@@ -295,6 +298,7 @@ update { select, unselect, clearSelection, keepQuery, textfieldMovable, matches 
                 , Cmd.none
                 , Nothing
                 )
+
             else
                 ( { state
                     | query = ""
@@ -360,6 +364,7 @@ update { select, unselect, clearSelection, keepQuery, textfieldMovable, matches 
                 , focus state.id
                 , Nothing
                 )
+
             else
                 ( state
                 , Cmd.none
@@ -427,11 +432,13 @@ update { select, unselect, clearSelection, keepQuery, textfieldMovable, matches 
                                 y =
                                     if top < scrollTop then
                                         top
+
                                     else if
                                         (top + height)
                                             > (scrollTop + state.menuHeight)
                                     then
                                         top + height - state.menuHeight
+
                                     else
                                         scrollTop
                             in
@@ -456,6 +463,7 @@ update { select, unselect, clearSelection, keepQuery, textfieldMovable, matches 
                         newZipList =
                             if keepQuery || state.query == "" then
                                 state.zipList |> Maybe.andThen ZipList.removeCurrentEntry
+
                             else
                                 ZipList.fromList entries state.entryHeights
                     in
@@ -463,6 +471,7 @@ update { select, unselect, clearSelection, keepQuery, textfieldMovable, matches 
                         | query =
                             if keepQuery then
                                 state.query
+
                             else
                                 ""
                         , zipList = newZipList
@@ -471,6 +480,7 @@ update { select, unselect, clearSelection, keepQuery, textfieldMovable, matches 
                         [ focus state.id
                         , if keepQuery || state.query == "" then
                             Cmd.none
+
                           else
                             scroll state.id 0
                         ]
@@ -794,6 +804,7 @@ simple config id selections query queryWidth queryPosition open =
                     && (query == "")
             then
                 Just (config.placeholder open)
+
             else
                 Nothing
 
@@ -851,6 +862,7 @@ textfield id textfieldClass query queryWidth placeholder =
                                             |> onKey ArrowLeft MoveQueryLeft
                                             |> onKey ArrowRight MoveQueryRight
                                             |> doIt
+
                                 else
                                     doIt
                                )
@@ -1020,6 +1032,7 @@ onKey code msg decoder =
                     Err actualCode ->
                         if actualCode == code then
                             Decode.succeed (Ok msg)
+
                         else
                             Decode.succeed (Err actualCode)
             )

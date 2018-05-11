@@ -46,6 +46,7 @@ import Keyboard.Extra
 import Task
 
 
+
 ---- MODEL
 
 
@@ -163,6 +164,7 @@ update { select, preventClosing, openMenu } selection state msg =
             , scroll state.id (top - (heights.menu - height) / 2)
             , if openM then
                 Just openMenu
+
               else
                 Nothing
             )
@@ -203,11 +205,13 @@ update { select, preventClosing, openMenu } selection state msg =
                         y =
                             if top < scrollTop then
                                 top
+
                             else if
                                 (top + height)
                                     > (scrollTop + state.menuHeight)
                             then
                                 top + height - state.menuHeight
+
                             else
                                 scrollTop
                     in
@@ -585,6 +589,7 @@ removeCurrentEntry ({ front, current, back, currentTop } as zipList) =
                     , back = rest
                 }
                     |> first
+
     else if front |> containsActualEntries then
         case front of
             [] ->
@@ -601,6 +606,7 @@ removeCurrentEntry ({ front, current, back, currentTop } as zipList) =
                     , currentTop = currentTop - height
                 }
                     |> reverseFirst
+
     else
         Nothing
 
@@ -664,6 +670,7 @@ fromListWithFilter matches entries entryHeights =
                             Entry a ->
                                 if a |> matches then
                                     Just ( Entry a, height )
+
                                 else
                                     Nothing
 
@@ -769,6 +776,7 @@ moveForwardToHelper :
 moveForwardToHelper a zipList =
     if (zipList.current |> Tuple.first) == Entry a then
         Just zipList
+
     else
         case zipList.back of
             [] ->

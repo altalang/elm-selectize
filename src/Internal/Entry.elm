@@ -33,6 +33,7 @@ selectFirst entries a =
                 Entry value ->
                     if a == value then
                         Just a
+
                     else
                         selectFirst rest a
 

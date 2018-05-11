@@ -13,8 +13,8 @@ module Selectize
         , downward
         , entry
         , simple
-        , upward
         , update
+        , upward
         , view
         , viewConfig
         )
@@ -164,6 +164,7 @@ and an input given by, for example,
                             ]
                             [ if open then
                                 Html.text "arrow_drop_up"
+
                               else
                                 Html.text "arrow_drop_down"
                             ]
@@ -194,6 +195,7 @@ import Internal.Entry as Internal
 import Internal.Selectize as Internal
 import Internal.SimpleSelectize
 import Internal.ZipList as ZipList
+
 
 
 {- model -}

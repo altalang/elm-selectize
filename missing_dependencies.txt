@@ -1,0 +1,7 @@
+WARNING! 5 of your dependencies have not yet been upgraded to
+support Elm 0.19.
+  - https://github.com/debois/elm-dom
+  - https://github.com/elm-community/list-extra
+  - https://github.com/elm-lang/dom
+  - https://github.com/elm-lang/keyboard
+  - https://github.com/ohanhi/keyboard-extra

@@ -36,6 +36,7 @@ import Keyboard.Extra
 import Task
 
 
+
 ---- MODEL
 
 
@@ -105,6 +106,7 @@ update ({ select, matches } as tagger) selection state msg =
         CloseMenu ->
             if state.preventBlur then
                 ( state, Cmd.none, Nothing )
+
             else
                 ( { state
                     | open = False
@@ -287,6 +289,7 @@ view config selection state =
                 }
                 state.menu
                 |> Html.map MenuMsg
+
           else
             Html.text ""
         ]
@@ -353,6 +356,7 @@ simple config buttons id selection _ open =
                                 Nothing
                     )
                 ]
+
               else
                 [ Events.on "focus"
                     (ZipList.decodeMeasurements path True
@@ -407,8 +411,10 @@ autocomplete config buttons id selection query open =
             , if selection == Nothing then
                 if open then
                     [ Attributes.placeholder config.placeholder ]
+
                 else
                     [ Attributes.value config.placeholder ]
+
               else
                 [ Attributes.style
                     [ "color" => "transparent" ]
@@ -431,6 +437,7 @@ autocomplete config buttons id selection query open =
                     )
                 , Events.onInput SetQuery
                 ]
+
               else
                 []
             , noOp (config.attrs (selection /= Nothing) open)
